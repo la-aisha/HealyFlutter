@@ -1,49 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:file/file.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:image_crop/image_crop.dart';
-import 'package:image_picker/image_picker.dart' as picker;
-import 'package:image_picker_platform_interface/image_picker_platform_interface.dart' as platform;
-import 'dart:io' as io;
+import 'package:image_picker/image_picker.dart';
+import '/widgets/re_usable_select_photo_button.dart';
 
-class CropImageScreen extends StatefulWidget {
-  final File imageFile;
-  final GlobalKey<CropState> cropKey;
+class CropImageScrenn extends StatelessWidget {
+  final Function(ImageSource source) onTap;
+  const CropImageScrenn({
+    Key? key,
+    required this.onTap,
+  }) : super(key: key);
 
-  CropImageScreen({required this.imageFile, required this.cropKey});
-
-  @override
-  _CropImageScreenState createState() => _CropImageScreenState();
-}
-
-class _CropImageScreenState extends State<CropImageScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Crop Image'),
-      ),
-      body: Crop(
-        key: widget.cropKey,
-        image: FileImage(widget.imageFile),
-        aspectRatio: 1.0,
-      ),
-      floatingActionButton: FloatingActionButton(
-         onPressed: () async {
-          final currentState = widget.cropKey.currentState;
-          if (currentState != null) {
-            final croppedFile = await ImageCrop.cropImage(
-              file: widget.imageFile,
-              area: currentState!.area,
-            );
-            Navigator.pop(context, croppedFile);
-          } else {
-            // Handle the case when currentState is null
-          }
-        },
-        child: Icon(Icons.done),
+    return Container(
+      // color: Colors.grey.shade300,
+      padding: const EdgeInsets.all(20),
+      child: Stack(
+        alignment: AlignmentDirectional.topCenter,
+        clipBehavior: Clip.none,
+        children: [
+          Positioned(
+            top: -35,
+            child: Container(
+              width: 50,
+              height: 6,
+              margin: const EdgeInsets.only(bottom: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(2.5),
+                color: Colors.white,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Column(children: [
+            SelectPhoto(
+              onTap: () => onTap(ImageSource.gallery),
+              icon: Icons.image,
+              textLabel: 'Browse Gallery',
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Center(
+              child: Text(
+                'OR',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            SelectPhoto(
+              onTap: () => onTap(ImageSource.camera),
+              icon: Icons.camera_alt_outlined,
+              textLabel: 'Use a Camera',
+            ),
+          ])
+        ],
       ),
     );
   }

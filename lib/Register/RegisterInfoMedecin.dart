@@ -35,10 +35,8 @@ class _RegisterMedecinInfoState extends State<RegisterMedecinInfo> {
 ];
     String? selectedValue;
     return Scaffold(
-      body: Container(
-          width: width,
-          height: height,
-          child: SingleChildScrollView(
+      body: SingleChildScrollView(
+          
             child: Column(
                 //crossAxisAlignment: CrossAxisAlignment.start,
 
@@ -247,7 +245,7 @@ class _RegisterMedecinInfoState extends State<RegisterMedecinInfo> {
                   
                 ]),
                 
-          )
+          
 
           //color: Colors.red,
 

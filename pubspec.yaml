@@ -43,6 +43,8 @@ dependencies:
 
   #image_picker_platform_interface: ^2.8.0
   image_picker: ^1.0.1
+  dotted_border: ^2.0.0+3
+  settings_ui: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +74,9 @@ flutter:
     - images/googleLogo.png
     - images/image1.png
     - images/image2.png
+    - images/gyneco.png
+    - images/medecin.png
+    - images/location.png
 
 
 
