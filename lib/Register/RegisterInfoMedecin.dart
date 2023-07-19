@@ -46,7 +46,7 @@ class _RegisterMedecinInfoState extends State<RegisterMedecinInfo> {
                       child: Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Image.asset(
-                      'images/logo.png',
+                      'images/logo2.png',
                       width: 150,
                       height: 150,
                     ),
@@ -261,7 +261,7 @@ class _RegisterMedecinInfoState extends State<RegisterMedecinInfo> {
     return Container(
       width: 133,
       height: 1,
-      color: Colors.blue,
+      color: Color(0xFF1E3148),
       margin:EdgeInsets.only(left: valMargin) ,
     );
   }
@@ -276,10 +276,10 @@ ElevatedButton suivantButton() {
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18),
-              //side: const BorderSide(color: Colors.blue, width: 2),
+              //side: const BorderSide(color: Color(0xFF1E3148), width: 2),
             ),
           ),
-          backgroundColor: MaterialStateProperty.all(Colors.blue)),
+          backgroundColor: MaterialStateProperty.all(Color(0xFF1E3148))),
       child: Text(
         'Suivant',
         style: GoogleFonts.poppins(
@@ -312,7 +312,7 @@ ElevatedButton OptionRegisterIcon({ required String text, IconData? icon , requi
     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
       RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18),
-        side: const BorderSide(color: Colors.blue, width: 2),
+        side: const BorderSide(color: Color(0xFF1E3148), width: 2),
       ),
     ),
     backgroundColor: MaterialStateProperty.all(Colors.white)),
@@ -336,7 +336,7 @@ ElevatedButton OptionRegisterImg({String? path , required String text, IconData?
     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
       RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18),
-        side: const BorderSide(color: Colors.blue, width: 2),
+        side: const BorderSide(color: Color(0xFF1E3148), width: 2),
       ),
     ),
     backgroundColor: MaterialStateProperty.all(Colors.white)),
@@ -354,10 +354,10 @@ Center welcomeText() {
           'BIENVENUE,',
           style: GoogleFonts.montserrat(
             fontWeight: FontWeight.w700,
-            color: Colors.blue,
+            color: Color(0xFF1E3148),
             fontSize: 21.95,
             decoration: TextDecoration.underline,
-            decorationColor: Colors.blue,
+            decorationColor: Color(0xFF1E3148),
           ),
           textAlign: TextAlign.center,
         ),
@@ -393,7 +393,7 @@ TextField textfield(
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              color: Colors.blue,
+              color: Color(0xFF1E3148),
               width: 3.0,
             ))),
     obscureText: isHide,

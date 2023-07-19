@@ -15,6 +15,8 @@ class _WelcomeState extends State<Welcome> {
     var size = MediaQuery.of(context).size;
     var width = size.width;
     var height = size.height;
+    Color myColor = Color(0xFF1E3148);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -24,13 +26,13 @@ class _WelcomeState extends State<Welcome> {
             SizedBox(height: height / 15),
             Center(
               child: Image.asset(
-                'images/logo.png',
-                width: 200,
-                height: 200,
+                'images/logo2.png',
+                width: 150,
+                height: 150,
               ),
             ),
             SizedBox(height: height / 8),
-            Center(
+           const Center(
               //color:Colors.red,
               child: Column(
               // mainAxisAlignment: MainAxisAlignment.start,
@@ -100,7 +102,7 @@ class _WelcomeState extends State<Welcome> {
                       RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18),
                   )),
-                  backgroundColor: MaterialStateProperty.all(Colors.blue)),
+                  backgroundColor: MaterialStateProperty.all(myColor)),
                 child: Text(
                   'Je suis un  Patient',
                   style: GoogleFonts.poppins(
@@ -127,7 +129,7 @@ class _WelcomeState extends State<Welcome> {
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18),
-                        side: const BorderSide(color: Colors.blue, width: 2),
+                        side: const BorderSide(color: Color(0xFF1E3148), width: 2),
                       ),
                     ),
                     backgroundColor: MaterialStateProperty.all(Colors.white)),
@@ -135,7 +137,7 @@ class _WelcomeState extends State<Welcome> {
                   'Je suis un Medecin',
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w400,
-                    color: Colors.blue,
+                    color: Colors.black,
                     fontSize: 20
                   ),
                 )),

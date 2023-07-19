@@ -1,46 +1,46 @@
+import 'dart:async';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:hopital/Register/StartRegister2.dart';
-import 'package:hopital/Register/Welcome.dart';
+import 'package:hopital/introduction_screen.dart';
 
 class StartRegister extends StatefulWidget {
-  const StartRegister({super.key});
-
+  const StartRegister({Key? key}) : super(key: key);
   @override
-  State<StartRegister> createState() => StartRegisterState();
+  State<StartRegister> createState() => _StartRegisterState();
 }
 
-class StartRegisterState extends State<StartRegister> {
+class _StartRegisterState extends State<StartRegister> {
+  
   @override
-  void initstate() {
+  void initState() {
+    // TODO: implement initState
     super.initState();
-    _navigatetoStartRegister2();
+    Timer(const Duration(seconds: 8), () {
+      Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+          builder: (BuildContext context) => StartRegister2())); //permet de rediriger vers une autre page sans retour
+    });
   }
 
-  _navigatetoStartRegister2(){
-     Future.delayed(
-      Duration(milliseconds: 9500),(){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Welcome()));
-
-
-      }
-    );
-  }
-
+  @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var width = size.width;
-    var height = size.height;
-
     return Scaffold(
-      //appBar: AppBar,
       body: Container(
-        width: width,
-        height: height,
-        color: Colors.white,
-        child: Image.asset(
-          'images/logo.png',
-          width: 100,
-          height: 100,
+        
+        width: MediaQuery.of(context)
+            .size
+            .width, //permet de prendre tous l'espace utiliser
+        height: MediaQuery.of(context).size.height,
+        color: Color(0xFF1E3148),
+        child: Column(
+          mainAxisAlignment:
+              MainAxisAlignment.spaceAround, //espacer les elements
+          children: [
+            Image.asset('images/logo.png',width: 300,height: 300,),
+            
+          ],
         ),
       ),
     );

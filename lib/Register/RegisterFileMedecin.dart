@@ -24,6 +24,8 @@ class RegisterFileMedecin extends StatefulWidget {
 class _RegisterFileMedecinState extends State<RegisterFileMedecin> {
   final TextEditingController controller = TextEditingController();
   String? selectedFilePath;
+  Color myColor = Color(0xFF1E3148);
+
 
   void selectFile() async {
     final filePickerResult = await FilePicker.platform.pickFiles(
@@ -70,13 +72,13 @@ class _RegisterFileMedecinState extends State<RegisterFileMedecin> {
                       child: Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Image.asset(
-                      'images/logo.png',
+                      'images/logo2.png',
                       width: 150,
                       height: 150,
                     ),
                   )),
                    SizedBox(
-                    height: 44
+                    height: 30
                   ),
                   Container(
                   width: width * 5 / 6,
@@ -85,7 +87,7 @@ class _RegisterFileMedecinState extends State<RegisterFileMedecin> {
                     child: TextFormField(
                       readOnly: true,
                       decoration: InputDecoration(
-                        hintText: 'Diplome',
+                        hintText: 'Diplome',border:InputBorder.none
                       ),
                       controller: controller,
                     ),
@@ -94,10 +96,16 @@ class _RegisterFileMedecinState extends State<RegisterFileMedecin> {
                   Container(
                   width: width * 5 / 6,
                   height: 45,
-                  child:
-                    ElevatedButton(
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  )),
+                  backgroundColor: MaterialStateProperty.all(myColor)),
                       onPressed: selectFile,
                       child: Text('Select PDF'),
+                      
                   ),),
                   SizedBox(
                     height: 4,
@@ -109,7 +117,7 @@ class _RegisterFileMedecinState extends State<RegisterFileMedecin> {
                     child: TextFormField(
                       readOnly: true,
                       decoration: InputDecoration(
-                        hintText: 'Licence médicale',
+                        hintText: 'Licence médicale',border:InputBorder.none
                       ),
                       controller: controller,
                     ),
@@ -120,7 +128,14 @@ class _RegisterFileMedecinState extends State<RegisterFileMedecin> {
                   height: 45,
                   child:
                     ElevatedButton(
+                      
                       onPressed: selectFile,
+                       style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  )),
+                  backgroundColor: MaterialStateProperty.all(myColor)),
                       child: Text('Select PDF'),
                   ),),
                  SizedBox(
@@ -133,9 +148,10 @@ class _RegisterFileMedecinState extends State<RegisterFileMedecin> {
                     child: TextFormField(
                       readOnly: true,
                       decoration: InputDecoration(
-                        hintText: 'Autorisation exercice',
+                        hintText: 'Autorisation exercice',border:InputBorder.none
                       ),
                       controller: controller,
+                      
                     ),
                   ),
                 ),
@@ -146,12 +162,18 @@ class _RegisterFileMedecinState extends State<RegisterFileMedecin> {
                     ElevatedButton(
                       onPressed: selectFile,
                       child: Text('Select PDF'),
+                       style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  )),
+                  backgroundColor: MaterialStateProperty.all(myColor)),
                   ),),
                   SizedBox(height: 30,),
                   _body() ,
                   SizedBox(height: 30,),
                   Container(
-                    width: width * 5 / 6,
+                    width: width * 1/ 2,
                   height: 45,
                   child:suivantButton(context),),
 
@@ -228,7 +250,7 @@ class _RegisterFileMedecinState extends State<RegisterFileMedecin> {
           onPressed: () {
             _clear();
           },
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Color(0xFF1E3148),
           tooltip: 'Delete',
           child: const Icon(Icons.delete),
         ),
@@ -239,7 +261,7 @@ class _RegisterFileMedecinState extends State<RegisterFileMedecin> {
               onPressed: () {
                 _cropImage();
               },
-              backgroundColor: const Color(0xFFBC764A),
+              backgroundColor: const Color(0xFF1E3148),
               tooltip: 'Crop',
               child: const Icon(Icons.crop),
             ),
@@ -270,7 +292,7 @@ class _RegisterFileMedecinState extends State<RegisterFileMedecin> {
                     radius: const Radius.circular(12.0),
                     borderType: BorderType.RRect,
                     dashPattern: const [8, 4],
-                    color: Theme.of(context).highlightColor.withOpacity(0.4),
+                    color: myColor,
                     child: Center(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -288,7 +310,7 @@ class _RegisterFileMedecinState extends State<RegisterFileMedecin> {
                                 .textTheme
                                 .bodyMedium!
                                 .copyWith(
-                                    color: Theme.of(context).highlightColor),
+                                    color: myColor),
                           )
                         ],
                       ),
@@ -302,6 +324,12 @@ class _RegisterFileMedecinState extends State<RegisterFileMedecin> {
                   onPressed: () {
                     _uploadImage();
                   },
+                   style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  )),
+                  backgroundColor: MaterialStateProperty.all(myColor)),
                   child: const Text('Upload'),
                 ),
               ),
@@ -372,7 +400,7 @@ ElevatedButton suivantButton(BuildContext context) {
         ),
       ),
       backgroundColor: MaterialStateProperty.all<Color>(
-        Colors.blue,
+        Color(0xFF1E3148),
       ),
       overlayColor: MaterialStateProperty.resolveWith<Color?>(
         (states) {
@@ -381,7 +409,7 @@ ElevatedButton suivantButton(BuildContext context) {
             return Colors.purple;
           } else {
             // Return the normal background color when the button is not pressed
-            return Colors.blue;
+            return Color(0xFF1E3148);
           }
         },
       ),

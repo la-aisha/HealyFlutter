@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hopital/Register/Otp.dart';
 import 'package:hopital/Register/RegisterInfoMedecin.dart';
 import 'package:hopital/Register/Welcome.dart';
 
@@ -38,7 +39,7 @@ class RegisterStateMedecin extends State<RegisterMedecin> {
                       child: Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Image.asset(
-                      'images/logo.png',
+                      'images/logo2.png',
                       width: 150,
                       height: 150,
                     ),
@@ -132,10 +133,10 @@ class RegisterStateMedecin extends State<RegisterMedecin> {
                           ),
                           TextButton(
                               onPressed: (){
-                                final medecinInfo = RegisterMedecinInfo();
+                                final OTP = Otp();
                                 Navigator.of(context).push(
                                 MaterialPageRoute(builder: (BuildContext ctx){
-                                return medecinInfo ;
+                                return OTP ;
                                 }
                                 ));
                               },
@@ -143,7 +144,7 @@ class RegisterStateMedecin extends State<RegisterMedecin> {
                                 "Se connecter?",
                                 style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xFFFF66C4),
+                                    color: Color(0xFF1E3148),
                                     fontSize: 17.3514,
                                     fontStyle: FontStyle.normal
                                 ),
@@ -160,7 +161,7 @@ class RegisterStateMedecin extends State<RegisterMedecin> {
                         
                          Text(
                             '  Ou',
-                            style: TextStyle(color:Colors.blue),
+                            style: TextStyle(color:Color(0xFF1E3148)),
                             textAlign: TextAlign.center,
                           ),
                         
@@ -179,7 +180,7 @@ class RegisterStateMedecin extends State<RegisterMedecin> {
                     Container(
                       width: width * 5 / 6,
                       height: 50,
-                      child: OptionRegisterIcon( icon: Icons.facebook , text: "Continuer avec Facebook",color: Colors.blue,context: context ) ,
+                      child: OptionRegisterIcon( icon: Icons.facebook , text: "Continuer avec Facebook",color: Color(0xFF1E3148),context: context ) ,
                     ),
 
 
@@ -198,7 +199,7 @@ class RegisterStateMedecin extends State<RegisterMedecin> {
     return Container(
       width: 133,
       height: 1,
-      color: Colors.blue,
+      color: Color(0xFF1E3148),
       margin:EdgeInsets.only(left: valMargin) ,
     );
   }
@@ -207,16 +208,16 @@ ElevatedButton suivantButton() {
       onPressed: () {
         //final signin = SignIn();
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => RegisterMedecinInfo()));
+            .push(MaterialPageRoute(builder: (context) => Otp()));
       },
       style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18),
-              //side: const BorderSide(color: Colors.blue, width: 2),
+              //side: const BorderSide(color: Color(0xFF1E3148), width: 2),
             ),
           ),
-          backgroundColor: MaterialStateProperty.all(Colors.blue)),
+          backgroundColor: MaterialStateProperty.all(Color(0xFF1E3148))),
       child: Text(
         'Suivant',
         style: GoogleFonts.poppins(
@@ -252,7 +253,7 @@ ElevatedButton OptionRegisterIcon({ required String text, IconData? icon , requi
     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
       RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18),
-        side: const BorderSide(color: Colors.blue, width: 2),
+        side: const BorderSide(color: Color(0xFF1E3148), width: 2),
       ),
     ),
     backgroundColor: MaterialStateProperty.all(Colors.white)),
@@ -276,7 +277,7 @@ ElevatedButton OptionRegisterImg({String? path , required String text, IconData?
     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
       RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18),
-        side: const BorderSide(color: Colors.blue, width: 2),
+        side: const BorderSide(color: Color(0xFF1E3148), width: 2),
       ),
     ),
     backgroundColor: MaterialStateProperty.all(Colors.white)),
@@ -294,10 +295,10 @@ Center welcomeText() {
           'BIENVENUE,',
           style: GoogleFonts.montserrat(
             fontWeight: FontWeight.w700,
-            color: Colors.blue,
+            color: Color(0xFF1E3148),
             fontSize: 21.95,
             decoration: TextDecoration.underline,
-            decorationColor: Colors.blue,
+            decorationColor: Color(0xFF1E3148),
           ),
           textAlign: TextAlign.center,
         ),
@@ -333,7 +334,7 @@ TextField textfield(
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              color: Colors.blue,
+              color: Color(0xFF1E3148),
               width: 3.0,
             ))),
     obscureText: isHide,
