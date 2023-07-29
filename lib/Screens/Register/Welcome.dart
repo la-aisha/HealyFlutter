@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:hopital/Models/Patient.dart';
+import 'package:hopital/Models/Role.dart';
 //import 'StartRegister.dart'
-import 'package:hopital/Login/Signin.dart';
+import 'package:hopital/Screens/Login/Signin.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hopital/Register/RegisterMedecin.dart';
+import 'package:hopital/Screens/Register/RegisterMedecin.dart';
+
+import 'RegisterPatient.dart';
 
 class Welcome extends StatefulWidget {
+   int role_id;
+
+  Welcome({required this.role_id});
+
   @override
-  State<Welcome> createState() => _WelcomeState();
+  State<Welcome> createState() => _WelcomeState(role_id: this.role_id);
 }
 
 class _WelcomeState extends State<Welcome> {
+   int role_id;
+  _WelcomeState({required this.role_id});
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -19,28 +30,29 @@ class _WelcomeState extends State<Welcome> {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
+          child: Column(
         //mainAxisAlignment: MainAxisAlignment.center ,
         //crossAxisAlignment:CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: height / 15),
-            Center(
-              child: Image.asset(
-                'images/logo2.png',
-                width: 150,
-                height: 150,
-              ),
+        children: [
+          SizedBox(height: height / 15),
+          Center(
+            child: Image.asset(
+              'images/logo2.png',
+              width: 150,
+              height: 150,
             ),
-            SizedBox(height: height / 8),
-           const Center(
+          ),
+          SizedBox(height: height / 8),
+          const Center(
               //color:Colors.red,
               child: Column(
-              // mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                //mainAxisSize: MainAxisSize.max,
-                children: [
-                Padding(padding: EdgeInsets.only(top: 20),
-               /*  child:const Text.rich(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            //mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                /*  child:const Text.rich(
                 TextSpan(
                   children: [
                     TextSpan(
@@ -65,8 +77,9 @@ class _WelcomeState extends State<Welcome> {
                   ],
                 ),
               ),
-              */   ),
-             /*  Padding(padding: EdgeInsets.only(top: 20),
+              */
+              ),
+              /*  Padding(padding: EdgeInsets.only(top: 20),
               child: Container(
                 //margin: const EdgeInsets.symmetric(horizontal: 50.0,vertical: 3.0),
                 child: Text(
@@ -81,73 +94,72 @@ class _WelcomeState extends State<Welcome> {
                 ),
               ),
                 ),
-                */ ],
-              )
-            ),
-            //const SizedBox(height: 60),
-            //SizedBox(height: height / 8),
-            SizedBox(height: height / 8),
-            Container(
-              //color:Colors.red,
-              width: width * 3 / 4,
-              height: 75,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => RegisterMedecin(),
-                  ));
-                },
-                style: ButtonStyle(
+                */
+            ],
+          )),
+          //const SizedBox(height: 60),
+          //SizedBox(height: height / 8),
+          SizedBox(height: height / 8),
+          Container(
+            //color:Colors.red,
+            width: width * 3 / 4,
+            height: 75,
+            child: ElevatedButton(
+
+              onPressed: () {
+                  var role = role_id = 3;
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      RegisterPatient(role_id: role ,patient: Patient(firstname: "",lastname: "" ,email: ""),),
+                ));
+              },
+              style: ButtonStyle(
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18),
                   )),
                   backgroundColor: MaterialStateProperty.all(myColor)),
-                child: Text(
-                  'Je suis un  Patient',
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 20
-
-                  ),
-                ),
+              child: Text(
+                'Je suis un  Patient',
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w400, fontSize: 20),
               ),
             ),
-            //const SizedBox(height: 26.81),
-            SizedBox(height: height / 30),
-            Container(
-              // color:Colors.red,
-              width: width * 3 / 4,
-              height: 75,
-              child: ElevatedButton(
+          ),
+          //const SizedBox(height: 26.81),
+          SizedBox(height: height / 30),
+          Container(
+            // color:Colors.red,
+            width: width * 3 / 4,
+            height: 75,
+            child: ElevatedButton(
                 onPressed: () {
                   //final signin = SignIn();
-                  Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => RegisterMedecin()));
+                  var role = role_id = 2;
+                  Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => RegisterMedecin(role_id: role))); 
                 },
                 style: ButtonStyle(
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18),
-                        side: const BorderSide(color: Color(0xFF1E3148), width: 2),
+                        side: const BorderSide(
+                            color: Color(0xFF1E3148), width: 2),
                       ),
                     ),
                     backgroundColor: MaterialStateProperty.all(Colors.white)),
                 child: Text(
                   'Je suis un Medecin',
                   style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                      fontSize: 20),
                 )),
-            )
+          )
 
-  //text
-          ],
-        )),
+          //text
+        ],
+      )),
     );
   }
 }
-
-

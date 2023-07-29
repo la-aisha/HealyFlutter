@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hopital/Register/Welcome.dart';
+import 'package:hopital/Models/Role.dart';
+import 'package:hopital/Screens/Register/Welcome.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -97,7 +98,7 @@ class _IntroScreenState extends State<IntroScreen> {
     /* final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('ON_BOARDING', false); */
 
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Welcome()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Welcome(role_id: 0),));
 
   }
 }

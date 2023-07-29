@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:hopital/Register/StartRegister2.dart';
-import 'package:hopital/introduction_screen.dart';
+import 'package:hopital/Screens/Register/StartRegister2.dart';
+import 'package:hopital/Screens/Register/introduction_screen.dart';
 
 class StartRegister2 extends StatefulWidget {
   const StartRegister2({Key? key}) : super(key: key);

@@ -1,20 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hopital/Register/Otp.dart';
-import 'package:hopital/Register/RegisterInfoMedecin.dart';
-import 'package:hopital/Register/Welcome.dart';
+import 'package:hopital/Screens/Register/Otp.dart';
+import 'package:hopital/Screens/Register/RegisterInfoMedecin.dart';
+import 'package:hopital/Screens/Register/Welcome.dart';
 
 class RegisterMedecin extends StatefulWidget {
+  final int role_id;
+
+  RegisterMedecin({required this.role_id});
   @override
-  RegisterStateMedecin createState() => RegisterStateMedecin();
+  RegisterStateMedecin createState() => RegisterStateMedecin(role_id: role_id);
 }
 
 class RegisterStateMedecin extends State<RegisterMedecin> {
+  final int role_id;
+  // RegisterPatient({required this.role_id});
+  RegisterStateMedecin({required this.role_id});
+
+  @override
+  void initState() {
+    super.initState();
+    print(role_id);
+  }
   /* ----- les controllers */
 
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
-    TextEditingController passwordconfirmController = new TextEditingController();
+  TextEditingController passwordconfirmController = new TextEditingController();
 
   TextEditingController firstNameController = new TextEditingController();
   TextEditingController lastNameController = new TextEditingController();
@@ -40,11 +52,11 @@ class RegisterStateMedecin extends State<RegisterMedecin> {
                     padding: EdgeInsets.only(top: 10),
                     child: Image.asset(
                       'images/logo2.png',
-                      width: 150,
-                      height: 150,
+                      width: 100,
+                      height: 100,
                     ),
                   )),
-                   SizedBox(
+                  SizedBox(
                     height: 45,
                   ),
                   Padding(
@@ -87,10 +99,10 @@ class RegisterStateMedecin extends State<RegisterMedecin> {
                         isHide: false,
                         textInputType: TextInputType.emailAddress),
                   ),
-                   SizedBox(
+                  SizedBox(
                     height: 15,
                   ),
-                   Container(
+                  Container(
                     width: width * 5 / 6,
                     height: 45,
                     child: textfield(
@@ -99,10 +111,10 @@ class RegisterStateMedecin extends State<RegisterMedecin> {
                         isHide: true,
                         textInputType: TextInputType.visiblePassword),
                   ),
-                   SizedBox(
+                  SizedBox(
                     height: 15,
                   ),
-                   Container(
+                  Container(
                     width: width * 5 / 6,
                     height: 45,
                     child: textfield(
@@ -111,48 +123,44 @@ class RegisterStateMedecin extends State<RegisterMedecin> {
                         isHide: false,
                         textInputType: TextInputType.visiblePassword),
                   ),
-                  SizedBox(height: 60,),
+                  SizedBox(
+                    height: 60,
+                  ),
                   Container(
-                    width: width * 5 / 6,
-                    height: 45,
-                    child:
-                  suivantButton()),
-                  SizedBox(height: 20,),
-                  Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Deja inscrit ?",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w400,
-                                color: Color.fromRGBO(0, 0, 0, 0.45),
-                                fontSize: 17.3514,
-                                fontStyle: FontStyle.normal
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          TextButton(
-                              onPressed: (){
-                                final OTP = Otp();
-                                Navigator.of(context).push(
-                                MaterialPageRoute(builder: (BuildContext ctx){
-                                return OTP ;
-                                }
-                                ));
-                              },
-                              child:    Text(
-                                "Se connecter?",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0xFF1E3148),
-                                    fontSize: 17.3514,
-                                    fontStyle: FontStyle.normal
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                          )
-                        ]),
-                        /* Row(
+                      width: width * 5 / 6, height: 45, child: suivantButton()),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Text(
+                      "Deja inscrit ?",
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w400,
+                          color: Color.fromRGBO(0, 0, 0, 0.45),
+                          fontSize: 17.3514,
+                          fontStyle: FontStyle.normal),
+                      textAlign: TextAlign.center,
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        final OTP = Otp();
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (BuildContext ctx) {
+                          return OTP;
+                        }));
+                      },
+                      child: Text(
+                        "Se connecter?",
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFF1E3148),
+                            fontSize: 17.3514,
+                            fontStyle: FontStyle.normal),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                  ]),
+                  /* Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -169,23 +177,28 @@ class RegisterStateMedecin extends State<RegisterMedecin> {
                         greyLine(14)
                       ],
                     ), */
-                    SizedBox(height: 20,),
-                    Container(
-                      width: width * 5 / 6,
-                      height: 50,
-                      child:
-                        OptionRegisterImg(path: "images/googleLogo.png", text: "Continuer avec Google",),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    width: width * 5 / 6,
+                    height: 50,
+                    child: OptionRegisterImg(
+                      path: "images/googleLogo.png",
+                      text: "Continuer avec Google",
                     ),
-                    SizedBox(height: 20),
-                    Container(
-                      width: width * 5 / 6,
-                      height: 50,
-                      child: OptionRegisterIcon( icon: Icons.facebook , text: "Continuer avec Facebook",color: Color(0xFF1E3148),context: context ) ,
-                    ),
-
-
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    width: width * 5 / 6,
+                    height: 50,
+                    child: OptionRegisterIcon(
+                        icon: Icons.facebook,
+                        text: "Continuer avec Facebook",
+                        color: Color(0xFF1E3148),
+                        context: context),
+                  ),
                 ]),
-                
           )
 
           //color: Colors.red,
@@ -193,97 +206,124 @@ class RegisterStateMedecin extends State<RegisterMedecin> {
           ),
     );
   }
-  
+
   /* ----- GREY LINE ---- */
-  Container greyLine(double valMargin){
+  Container greyLine(double valMargin) {
     return Container(
       width: 133,
       height: 1,
       color: Color(0xFF1E3148),
-      margin:EdgeInsets.only(left: valMargin) ,
+      margin: EdgeInsets.only(left: valMargin),
     );
   }
-ElevatedButton suivantButton() {
-  return ElevatedButton(
-      onPressed: () {
-        //final signin = SignIn();
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => Otp()));
-      },
-      style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18),
-              //side: const BorderSide(color: Color(0xFF1E3148), width: 2),
-            ),
-          ),
-          backgroundColor: MaterialStateProperty.all(Color(0xFF1E3148))),
-      child: Text(
-        'Suivant',
-        style: GoogleFonts.poppins(
-            fontWeight: FontWeight.w400, color: Colors.white, fontSize: 20),
-  ));
-}
 
+  ElevatedButton suivantButton() {
+    return ElevatedButton(
+        onPressed: () {
+          //final signin = SignIn();
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => Otp()));
+        },
+        style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18),
+                //side: const BorderSide(color: Color(0xFF1E3148), width: 2),
+              ),
+            ),
+            backgroundColor: MaterialStateProperty.all(Color(0xFF1E3148))),
+        child: Text(
+          'Suivant',
+          style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w400, color: Colors.white, fontSize: 20),
+        ));
+  }
 }
 
 /* --- fqcebook --- */
-ElevatedButton OptionRegisterIcon({ required String text, IconData? icon , required Color color , required BuildContext context }  ){
-  return ElevatedButton(onPressed: (){    
-   
-  /*  if(icon == Icons.mail){
+ElevatedButton OptionRegisterIcon(
+    {required String text,
+    IconData? icon,
+    required Color color,
+    required BuildContext context}) {
+  return ElevatedButton(
+    onPressed: () {
+      /*  if(icon == Icons.mail){
       Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext ctx){
         return Login() ;
     })) ;
 
    }
  */
-   
-  }, 
-  child: Row(
-    crossAxisAlignment: CrossAxisAlignment.center,
-    mainAxisAlignment: MainAxisAlignment.start,
-    children: [
-      Icon(icon , color: color,),
-      Padding(padding: EdgeInsets.only(left: 10)),
-      Text(text , style: TextStyle( fontSize: 16 , fontWeight: FontWeight.w500 , color: Colors.black,),)
-    ],
-  ),
-   style: ButtonStyle(
-    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-      RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18),
-        side: const BorderSide(color: Color(0xFF1E3148), width: 2),
-      ),
+    },
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Icon(
+          icon,
+          color: color,
+        ),
+        Padding(padding: EdgeInsets.only(left: 10)),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: Colors.black,
+          ),
+        )
+      ],
     ),
-    backgroundColor: MaterialStateProperty.all(Colors.white)),
+    style: ButtonStyle(
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
+            side: const BorderSide(color: Color(0xFF1E3148), width: 2),
+          ),
+        ),
+        backgroundColor: MaterialStateProperty.all(Colors.white)),
   );
 }
 
 /* ---- Option Register */
-ElevatedButton OptionRegisterImg({String? path , required String text, IconData? icon} ){
-  return ElevatedButton(onPressed: (){
-  }, 
-  child: Row(
-    children: [
-      Image.asset("$path" ,width: 23 ,height: 22,) ,
-     // Icon(icon , color: Colors.black,),
+ElevatedButton OptionRegisterImg(
+    {String? path, required String text, IconData? icon}) {
+  return ElevatedButton(
+    onPressed: () {},
+    child: Row(
+      children: [
+        Image.asset(
+          "$path",
+          width: 23,
+          height: 22,
+        ),
+        // Icon(icon , color: Colors.black,),
 
-      Padding(padding: EdgeInsets.only( left : 10) ,
-      child:Text(text , style: TextStyle( fontSize: 16 , fontWeight: FontWeight.w500 , color: Colors.black,),),)
-    ],
-  ),
-   style: ButtonStyle(
-    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-      RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18),
-        side: const BorderSide(color: Color(0xFF1E3148), width: 2),
-      ),
+        Padding(
+          padding: EdgeInsets.only(left: 10),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+            ),
+          ),
+        )
+      ],
     ),
-    backgroundColor: MaterialStateProperty.all(Colors.white)),
- 
+    style: ButtonStyle(
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
+            side: const BorderSide(color: Color(0xFF1E3148), width: 2),
+          ),
+        ),
+        backgroundColor: MaterialStateProperty.all(Colors.white)),
   );
 }
+
 /* ---fonction pour aligner deux row */
 Center welcomeText() {
   return Center(
@@ -340,7 +380,4 @@ TextField textfield(
     obscureText: isHide,
     keyboardType: textInputType,
   );
-
-
-  
 }

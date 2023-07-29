@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hopital/Register/RegisterInfoMedecin.dart';
+import 'package:hopital/Screens/Register/RegisterInfoMedecin.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 
@@ -276,7 +276,7 @@ class Otp extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => RegisterMedecinInfo()),
+          MaterialPageRoute(builder: (context) => RegisterMedecinInfo(role_id: 3,)),
         );
       },
       style: ButtonStyle(
